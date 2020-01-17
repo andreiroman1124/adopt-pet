@@ -1,18 +1,22 @@
 import React from "react";
 import { render } from "react-dom";
-import Pet from "./Pet";
+import { Router, Link } from "@reach/router";
+import Results from "./Results";
+import Details from "./Details";
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Adopt Me!</h1>
-        <Pet name="Roger" type="dog" breed="Labrador" />
-        <Pet name="Ben" type="cat" breed="Persian" />
-        <Pet name="Pepper" type="bird" breed="Mixed" />
+        <header>
+          <Link to="/">Adopt Me!</Link>
+        </header>
+        <Router>
+          <Results path="/" />
+          <Details path="/details/:id" />
+        </Router>
       </div>
     );
   }
 }
-
-render(React.createElement(App), document.getElementById("root"));
+render(<App />, document.getElementById("root"));
